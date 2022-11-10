@@ -2,6 +2,7 @@ package az.anvar.servicesworkmanager
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import az.anvar.servicesworkmanager.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -14,8 +15,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         binding.simpleService.setOnClickListener {
-            val intent = MyService.newIntent(this)
-            startService(intent)
+            startService(MyService.newIntent(this, 25))
+        }
+
+        binding.foregroundService.setOnClickListener {
+            ContextCompat.startForegroundService(
+                this,
+                MyForegroundService.newIntent(this)
+            )
         }
     }
 }
