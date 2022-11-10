@@ -30,7 +30,7 @@ class MyService : Service() {
 
     override fun onDestroy() {
         super.onDestroy()
-        log("onCreate")
+        log("onDestroy")
         coroutine.cancel()
     }
 
