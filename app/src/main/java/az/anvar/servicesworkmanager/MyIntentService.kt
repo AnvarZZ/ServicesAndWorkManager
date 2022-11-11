@@ -19,6 +19,7 @@ class MyIntentService : IntentService(NAME) {
         log("onCreate")
         createNotificationChannel()
         startForeground(NOTIFICATION_ID, createNotification())
+        setIntentRedelivery(false)
     }
 
     @Deprecated("Deprecated in Java")
